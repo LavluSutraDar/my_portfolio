@@ -20,10 +20,11 @@
                                         </div>
                                         <div class="col-sm-6 col-md-7">
                                             <div class="about-info">
-                                                <p><span class="title-s">Name: </span> <span>Morgan Freeman</span></p>
+                                                
+                                                <p><span class="title-s">Name: </span> <span></span></p>
                                                 <p><span class="title-s">Profile: </span> <span>full stack
                                                         developer</span></p>
-                                                <p><span class="title-s">Email: </span> <span>contact@example.com</span>
+                                                <p><span class="title-s">: </span> <span>contact@example.com</span>
                                                 </p>
                                                 <p><span class="title-s">Phone: </span> <span>(617) 557-0089</span></p>
                                             </div>

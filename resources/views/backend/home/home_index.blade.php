@@ -10,7 +10,7 @@
             <div class="modal-body">
                 <form action="{{route('home.store')}}" method="POST" enctype="multipart/form-data">
                     @csrf
-                    {{-- <input type="hidden" name="_method" value="Delete"> --}}
+                    
 
                     <div class="mb-3">
                         <label for="" class="form-label">Name</label>
@@ -49,7 +49,7 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="" class="form-label text-white">Image</label>
+                        <label for="" class="form-label">Chose Your Image</label>
                         <input type="file" name="image"
                             class="form-control-file @error('image') is-invalid @enderror">
 
@@ -62,7 +62,7 @@
                     </div>
 
                       <div class="mb-3">
-                        <p for="" class="mt-4">Upload Resume</p>
+                        <label for="" class="form-label">Chose your PDF Fle</label>
                         <input type="file" name="resume"
                             class="mb-2 form-control-file @error('resume') is-invalid @enderror">
 

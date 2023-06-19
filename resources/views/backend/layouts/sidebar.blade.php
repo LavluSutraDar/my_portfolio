@@ -28,7 +28,7 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Custom Utilities:</h6>
                 <a class="collapse-item" href="{{route('home.create')}}">Home Form</a>
-                <a class="collapse-item" href="utilities-border.html">Home View</a>
+                <a class="collapse-item" href="{{route('home.index')}}">Home View</a>
             </div>
         </div>
     </li>
