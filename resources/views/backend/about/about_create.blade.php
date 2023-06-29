@@ -1,14 +1,14 @@
 @extends('backend.master')
-
 @section('title')
-    HOME PAGE
+    About Create
 @endsection
+
 @section('main-content')
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
 
             <div class="modal-body">
-                <form action="{{route('home.store')}}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('about.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <input type="hidden" name="_method" value="POST">
 
@@ -25,11 +25,11 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="" class="form-label">Title</label>
-                        <input type="text" name="title" class="form-control @error('title') is-invalid @enderror"
-                            value="{{ old('title') }}">
+                        <label for="" class="form-label">Profile</label>
+                        <input type="text" name="profile" class="form-control @error('profile') is-invalid @enderror"
+                            value="{{ old('profile') }}">
 
-                        @error('title')
+                        @error('profile')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
@@ -37,11 +37,11 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="" class="form-label">SubTitle</label>
-                        <input type="text" name="subtitle" class="form-control @error('subtitle') is-invalid @enderror"
-                            value="{{ old('subtitle') }}">
+                        <label for="" class="form-label">Email</label>
+                        <input type="email" name="email" class="form-control @error('email') is-invalid @enderror"
+                            value="{{ old('email') }}">
 
-                        @error('subtitle')
+                        @error('email')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
@@ -49,24 +49,38 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="" class="form-label">Chose Your Image</label>
+                        <label for="" class="form-label">Phone</label>
+                        <input type="number" name="phone" class="form-control @error('phone') is-invalid @enderror"
+                            value="{{ old('phone') }}">
+
+                        @error('phone')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Discription</label>
+
+                        <textarea class="summernote form-control @error('description') is-invalid @enderror" name="description" rows="5" >
+                            {{old('description')}}
+
+                        </textarea>
+
+                        @error('description')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="" class="form-label">Image</label>
                         <input type="file" name="image"
-                            class="form-control-file @error('image') is-invalid @enderror">
+                            class="form-control-file @error('image') is-invalid @enderror" value="{{old('image')}}">
 
                         @error('image')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-
-                    </div>
-
-                      <div class="mb-3">
-                        <label for="" class="form-label">Chose your PDF Fle</label>
-                        <input type="file" name="resume"
-                            class="mb-2 form-control-file @error('resume') is-invalid @enderror">
-
-                        @error('resume')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>

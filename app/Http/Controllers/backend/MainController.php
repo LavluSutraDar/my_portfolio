@@ -79,7 +79,7 @@ class MainController extends Controller
         Home::create($data);
 
         $notifacation = [
-            'message' => 'Category Created Successfully',
+            'message' => 'Created Successfully',
             'alert-type' => 'info',
         ];
          return back()->with($notifacation);
@@ -111,8 +111,6 @@ class MainController extends Controller
             'name' => $request->edit_name,
             'title' => $request->edit_title,
             'sub_title' => $request->edit_subtitle,
-            //'image' => $request->edit_image,
-            //'resume' => $request->edit_resume,
         );
         
 
@@ -135,22 +133,23 @@ class MainController extends Controller
         }
 
         //resume Update section
-        // if ($request->hasFile('resume')) {
+        if ($request->hasFile('resume')) {
 
-        //     if ($request->edit_resume) {
-        //         File::delete(public_path('backend/home-pdf/' . $request->edit_resume));
-        //     }
+            if ($request->edit_resume) {
+                File::delete(public_path('backend/home-pdf/' . $request->edit_resume));
+            }
 
-        //     $file = $request->file('resume');
-        //     $extension = $file->getClientOriginalExtension();
-        //     $resume = time()  . '.' . $extension;
-        //     $file->move(public_path('backend/home-pdf/'), $resume);
-        //     $data['resume'] = $resume;
-        // }
+            $file = $request->file('resume');
+            $extension = $file->getClientOriginalExtension();
+
+            $resume = time()  . '.' . $extension;
+            $file->move(public_path('backend/home-pdf/'), $resume);
+            $data['resume'] = $resume;
+        }
 
         $notifacation = [
-            'message' => 'Post Update Successfully',
-            'alert-type' => 'info',
+            'message' => 'Update Successfully',
+            'alert-type' => 'success',
         ];
 
         Home::where('id', $id)->update($data);
@@ -169,6 +168,11 @@ class MainController extends Controller
             File::delete(public_path('backend/home-image/' . $product->image));
         }
         $product->delete();
-        return Redirect()->back();
+        
+        $notifacation = [
+            'message' => 'Delete Successfully',
+            'alert-type' => 'success',
+        ];
+        return Redirect()->back()->with($notifacation);
     }
 }

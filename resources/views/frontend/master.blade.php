@@ -1,91 +1,128 @@
 @extends('frontend.index')
 
 @section('main-section')
-    <main id="main">
+    <!-- ======= Hero Section ======= -->
+    @foreach ($homes as $home)
+        <div id="hero" class="hero route bg-image"
+            style="background-image: url({{ asset('backend/home-image/' . $home->image) }})">
 
+
+            <div class="overlay-itro"></div>
+            <div class="hero-content display-table">
+                <div class="table-cell">
+                    <div class="container">
+                        <!--<p class="display-6 color-d">Hello, world!</p>-->
+                        <h1 class="hero-title mb-4">{{ $home->name }}</h1>
+                        <p class="hero-subtitle"><span class="typed" data-typed-items="{{ $home->title }}"></span></p>
+
+                        <p class="hero-subtitle"><span class="typed" data-typed-items="{{ $home->sub_title }}"></span></p>
+
+                        <p class="pt-3">
+                            <a class="btn btn-primary btn js-scroll px-4" href="{{ url($home->resume) }}"
+                                role="button">DOWNLOAD RESUME</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endforeach
+
+    <!-- End Hero Section -->
+    <main id="main">
         <!-- ======= About Section ======= -->
         <section id="about" class="about-mf sect-pt4 route">
             <div class="container">
                 <div class="row">
-                    <div class="col-sm-12">
-                        <div class="box-shadow-full">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="row">
-                                        <div class="col-sm-6 col-md-5">
-                                            <div class="about-img">
-                                                <img src="assets/img/testimonial-2.jpg" class="img-fluid rounded b-shadow-a"
-                                                    alt="">
+                    @foreach ($abouts as $about)
+                        <div class="col-sm-12">
+                            <div class="box-shadow-full">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="row">
+                                            <div class="col-sm-6 col-md-5">
+                                                <div class="about-img">
+                                                    <img src="{{ asset('backend/about-image/' . $about->image) }}"
+                                                        class="img-fluid rounded b-shadow-a" alt=""
+                                                        style="height: 200px">
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6 col-md-7">
+                                                <div class="about-info">
+
+                                                    <p><span class="title-s">{{ $about->name }}: </span> <span></span></p>
+                                                    <p>
+                                                        <span class="title-s">Profile: </span>
+                                                        <span>
+                                                            {{ $about->profile }}
+                                                        </span>
+                                                    </p>
+                                                    <p><span class="title-s">Email: </span> <span>{{ $about->email }}</span>
+                                                    </p>
+                                                    <p><span class="title-s">Phone: </span>
+                                                        <span>(+00) {{ $about->phone }}</span>
+                                                    </p>
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="col-sm-6 col-md-7">
-                                            <div class="about-info">
-                                                
-                                                <p><span class="title-s">Name: </span> <span></span></p>
-                                                <p><span class="title-s">Profile: </span> <span>full stack
-                                                        developer</span></p>
-                                                <p><span class="title-s">: </span> <span>contact@example.com</span>
-                                                </p>
-                                                <p><span class="title-s">Phone: </span> <span>(617) 557-0089</span></p>
+                                        <div class="skill-mf">
+
+                                            <p class="title-s">Skill</p>
+                                            <span>HTML</span> <span class="pull-right">85%</span>
+                                            <div class="progress">
+                                                <div class="progress-bar" role="progressbar" style="width: 85%;"
+                                                    aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
+                                            </div>
+
+                                            <span>CSS3</span> <span class="pull-right">75%</span>
+                                            <div class="progress">
+                                                <div class="progress-bar" role="progressbar" style="width: 75%"
+                                                    aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                                            </div>
+
+                                            <span>BOOTSTRAP</span> <span class="pull-right">85%</span>
+                                            <div class="progress">
+                                                <div class="progress-bar" role="progressbar" style="width: 85%;"
+                                                    aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
+                                            </div>
+
+                                            <span>PHP</span> <span class="pull-right">90%</span>
+                                            <div class="progress">
+                                                <div class="progress-bar" role="progressbar" style="width: 90%"
+                                                    aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+                                            </div>
+
+                                            <span>LARAVEL</span> <span class="pull-right">95%</span>
+                                            <div class="progress">
+                                                <div class="progress-bar" role="progressbar" style="width: 95%;"
+                                                    aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>
+                                            </div>
+
+                                            <span>JAVASCRIPT</span> <span class="pull-right">90%</span>
+                                            <div class="progress">
+                                                <div class="progress-bar" role="progressbar" style="width: 90%"
+                                                    aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="skill-mf">
-                                        <p class="title-s">Skill</p>
-                                        <span>HTML</span> <span class="pull-right">85%</span>
-                                        <div class="progress">
-                                            <div class="progress-bar" role="progressbar" style="width: 85%;"
-                                                aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
+                                    <div class="col-md-6">
+                                        <div class="about-me pt-4 pt-md-0">
+                                            <div class="title-box-2">
+                                                <h5 class="title-left">
+                                                    About me
+                                                </h5>
+                                            </div>
+                                            <p class="lead">
+                                                @php
+                                                    echo $about->description;
+                                                @endphp
+                                            </p>
+
                                         </div>
-                                        <span>CSS3</span> <span class="pull-right">75%</span>
-                                        <div class="progress">
-                                            <div class="progress-bar" role="progressbar" style="width: 75%"
-                                                aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-                                        <span>PHP</span> <span class="pull-right">50%</span>
-                                        <div class="progress">
-                                            <div class="progress-bar" role="progressbar" style="width: 50%"
-                                                aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-                                        <span>JAVASCRIPT</span> <span class="pull-right">90%</span>
-                                        <div class="progress">
-                                            <div class="progress-bar" role="progressbar" style="width: 90%"
-                                                aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="about-me pt-4 pt-md-0">
-                                        <div class="title-box-2">
-                                            <h5 class="title-left">
-                                                About me
-                                            </h5>
-                                        </div>
-                                        <p class="lead">
-                                            Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Curabitur
-                                            arcu erat, accumsan id
-                                            imperdiet et, porttitor
-                                            at sem. Praesent sapien massa, convallis a pellentesque nec, egestas non
-                                            nisi. Nulla
-                                            porttitor accumsan tincidunt.
-                                        </p>
-                                        <p class="lead">
-                                            Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Vivamus
-                                            suscipit tortor eget felis
-                                            porttitor volutpat. Vestibulum
-                                            ac diam sit amet quam vehicula elementum sed sit amet dui. porttitor at sem.
-                                        </p>
-                                        <p class="lead">
-                                            Nulla porttitor accumsan tincidunt. Quisque velit nisi, pretium ut lacinia
-                                            in, elementum id enim.
-                                            Nulla porttitor accumsan
-                                            tincidunt. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a.
-                                        </p>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </section>
@@ -108,102 +145,28 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-4">
-                        <div class="service-box">
-                            <div class="service-ico">
-                                <span class="ico-circle"><i class="bi bi-briefcase"></i></span>
-                            </div>
-                            <div class="service-content">
-                                <h2 class="s-title">Web Design</h2>
-                                <p class="s-description text-center">
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni adipisci eaque autem
-                                    fugiat! Quia,
-                                    provident vitae! Magni
-                                    tempora perferendis eum non provident.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="service-box">
-                            <div class="service-ico">
-                                <span class="ico-circle"><i class="bi bi-card-checklist"></i></span>
-                            </div>
-                            <div class="service-content">
-                                <h2 class="s-title">Web Development</h2>
-                                <p class="s-description text-center">
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni adipisci eaque autem
-                                    fugiat! Quia,
-                                    provident vitae! Magni
-                                    tempora perferendis eum non provident.
-                                </p>
+                    @foreach ($services as $service)
+                        <div class="col-md-4">
+                            <div class="service-box">
+                                <div class="service-ico">
+                                    <span class="ico-circle">
+                                        <i class="@php
+echo $service->icon; @endphp">
+                                        </i>
+                                    </span>
+                                </div>
+                                <div class="service-content">
+                                    <h2 class="s-title">{{ $service->title }}</h2>
+                                    <p class="s-description text-center">
+
+                                        @php
+                                            echo $service->description;
+                                        @endphp
+                                    </p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="service-box">
-                            <div class="service-ico">
-                                <span class="ico-circle"><i class="bi bi-bar-chart"></i></span>
-                            </div>
-                            <div class="service-content">
-                                <h2 class="s-title">Photography</h2>
-                                <p class="s-description text-center">
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni adipisci eaque autem
-                                    fugiat! Quia,
-                                    provident vitae! Magni
-                                    tempora perferendis eum non provident.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="service-box">
-                            <div class="service-ico">
-                                <span class="ico-circle"><i class="bi bi-binoculars"></i></span>
-                            </div>
-                            <div class="service-content">
-                                <h2 class="s-title">Responsive Design</h2>
-                                <p class="s-description text-center">
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni adipisci eaque autem
-                                    fugiat! Quia,
-                                    provident vitae! Magni
-                                    tempora perferendis eum non provident.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="service-box">
-                            <div class="service-ico">
-                                <span class="ico-circle"><i class="bi bi-brightness-high"></i></span>
-                            </div>
-                            <div class="service-content">
-                                <h2 class="s-title">Graphic Design</h2>
-                                <p class="s-description text-center">
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni adipisci eaque autem
-                                    fugiat! Quia,
-                                    provident vitae! Magni
-                                    tempora perferendis eum non provident.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="service-box">
-                            <div class="service-ico">
-                                <span class="ico-circle"><i class="bi bi-calendar4-week"></i></span>
-                            </div>
-                            <div class="service-content">
-                                <h2 class="s-title">Marketing Services</h2>
-                                <p class="s-description text-center">
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni adipisci eaque autem
-                                    fugiat! Quia,
-                                    provident vitae! Magni
-                                    tempora perferendis eum non provident.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </section>
@@ -276,168 +239,56 @@
                             <h3 class="title-a">
                                 Portfolio
                             </h3>
-                            <p class="subtitle-a">
+                            {{-- <p class="subtitle-a">
                                 Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                            </p>
+                            </p> --}}
                             <div class="line-mf"></div>
                         </div>
                     </div>
                 </div>
+
                 <div class="row">
-                    <div class="col-md-4">
-                        <div class="work-box">
-                            <a href="assets/img/work-1.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox">
-                                <div class="work-img">
-                                    <img src="assets/img/work-1.jpg" alt="" class="img-fluid">
-                                </div>
-                            </a>
-                            <div class="work-content">
-                                <div class="row">
-                                    <div class="col-sm-8">
-                                        <h2 class="w-title">Lorem impsum dolor</h2>
-                                        <div class="w-more">
-                                            <span class="w-ctegory">Web Design</span> / <span class="w-date">18 Sep.
-                                                2018</span>
+                    @if (count($portfolios) > 0)
+                        @foreach ($portfolios as $portfolio)
+                            <div class="col-md-4">
+                                <div class="work-box">
+                                    <a href="" data-gallery="portfolioGallery" class="portfolio-lightbox">
+                                        <div class="work-img">
+                                            <img src="{{ asset('backend/portfolio-image/' . $portfolio->small_image) }}"
+                                                alt="" class="img-fluid">
                                         </div>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <div class="w-like">
-                                            <a href="portfolio-details.html"> <span class="bi bi-plus-circle"></span></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="work-box">
-                            <a href="assets/img/work-2.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox">
-                                <div class="work-img">
-                                    <img src="assets/img/work-2.jpg" alt="" class="img-fluid">
-                                </div>
-                            </a>
-                            <div class="work-content">
-                                <div class="row">
-                                    <div class="col-sm-8">
-                                        <h2 class="w-title">Loreda Cuno Nere</h2>
-                                        <div class="w-more">
-                                            <span class="w-ctegory">Web Design</span> / <span class="w-date">18 Sep.
-                                                2018</span>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <div class="w-like">
-                                            <a href="portfolio-details.html"> <span class="bi bi-plus-circle"></span></a>
+                                    </a>
+                                    <div class="work-content">
+                                        <div class="row">
+                                            <div class="col-sm-8">
+                                                <h2 class="w-title">{{ $portfolio->title }}</h2>
+                                                <div class="w-more">
+                                                    <span class="w-ctegory">{{ $portfolio->category }}
+                                                    </span> /
+                                                    <span class="w-date">
+                                                        {{ date('d M Y', strtotime($portfolio->created_at)) }}
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <div class="w-like">
+                                                    <a href="{{ route('portfolio_details') }}"> <span
+                                                            class="bi bi-plus-circle"></span></a>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="work-box">
-                            <a href="assets/img/work-3.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox">
-                                <div class="work-img">
-                                    <img src="assets/img/work-3.jpg" alt="" class="img-fluid">
-                                </div>
-                            </a>
-                            <div class="work-content">
-                                <div class="row">
-                                    <div class="col-sm-8">
-                                        <h2 class="w-title">Mavrito Lana Dere</h2>
-                                        <div class="w-more">
-                                            <span class="w-ctegory">Web Design</span> / <span class="w-date">18 Sep.
-                                                2018</span>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <div class="w-like">
-                                            <a href="portfolio-details.html"> <span class="bi bi-plus-circle"></span></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="work-box">
-                            <a href="assets/img/work-4.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox">
-                                <div class="work-img">
-                                    <img src="assets/img/work-4.jpg" alt="" class="img-fluid">
-                                </div>
-                            </a>
-                            <div class="work-content">
-                                <div class="row">
-                                    <div class="col-sm-8">
-                                        <h2 class="w-title">Bindo Laro Cado</h2>
-                                        <div class="w-more">
-                                            <span class="w-ctegory">Web Design</span> / <span class="w-date">18 Sep.
-                                                2018</span>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <div class="w-like">
-                                            <a href="portfolio-details.html"> <span class="bi bi-plus-circle"></span></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="work-box">
-                            <a href="assets/img/work-5.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox">
-                                <div class="work-img">
-                                    <img src="assets/img/work-5.jpg" alt="" class="img-fluid">
-                                </div>
-                            </a>
-                            <div class="work-content">
-                                <div class="row">
-                                    <div class="col-sm-8">
-                                        <h2 class="w-title">Studio Lena Mado</h2>
-                                        <div class="w-more">
-                                            <span class="w-ctegory">Web Design</span> / <span class="w-date">18 Sep.
-                                                2018</span>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <div class="w-like">
-                                            <a href="portfolio-details.html"> <span class="bi bi-plus-circle"></span></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="work-box">
-                            <a href="assets/img/work-6.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox">
-                                <div class="work-img">
-                                    <img src="assets/img/work-6.jpg" alt="" class="img-fluid">
-                                </div>
-                            </a>
-                            <div class="work-content">
-                                <div class="row">
-                                    <div class="col-sm-8">
-                                        <h2 class="w-title">Studio Big Bang</h2>
-                                        <div class="w-more">
-                                            <span class="w-ctegory">Web Design</span> / <span class="w-date">18 Sep.
-                                                2017</span>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <div class="w-like">
-                                            <a href="portfolio-details.html"> <span class="bi bi-plus-circle"></span></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                        @endforeach
+                    @endif
+
 
                 </div>
+
             </div>
         </section>
+
         <!-- End Portfolio Section -->
 
         <!-- ======= Testimonials Section ======= -->
@@ -637,45 +488,73 @@
                                             </h5>
                                         </div>
                                         <div>
-                                            <form action="forms/contact.php" method="post" role="form"
-                                                class="php-email-form">
+                                            <form action="{{ route('contuct.store') }}" method="POST" class="">
+                                                @csrf
+                                                <input type="hidden" name="_method" value="POST">
+
                                                 <div class="row">
                                                     <div class="col-md-12 mb-3">
                                                         <div class="form-group">
-                                                            <input type="text" name="name" class="form-control"
-                                                                id="name" placeholder="Your Name" required>
+                                                            <input type="text" name="name"
+                                                                class="form-control @error('name') is-invalid @enderror"
+                                                                placeholder="Your Name">
+
+                                                            @error('name')
+                                                                <span class="invalid-feedback" role="alert">
+                                                                    <strong>{{ $message }}</strong>
+                                                                </span>
+                                                            @enderror
                                                         </div>
                                                     </div>
                                                     <div class="col-md-12 mb-3">
                                                         <div class="form-group">
-                                                            <input type="email" class="form-control" name="email"
-                                                                id="email" placeholder="Your Email" required>
+                                                            <input type="text"
+                                                                class="form-control @error('email') is-invalid @enderror"
+                                                                name="email" placeholder="Your Email">
+                                                            @error('email')
+                                                                <span class="invalid-feedback" role="alert">
+                                                                    <strong>{{ $message }}</strong>
+                                                                </span>
+                                                            @enderror
                                                         </div>
                                                     </div>
                                                     <div class="col-md-12 mb-3">
                                                         <div class="form-group">
-                                                            <input type="text" class="form-control" name="subject"
-                                                                id="subject" placeholder="Subject" required>
+                                                            <input type="text"
+                                                                class="form-control  @error('subject') is-invalid @enderror"
+                                                                name="subject" placeholder="Subject">
+                                                            @error('subject')
+                                                                <span class="invalid-feedback" role="alert">
+                                                                    <strong>{{ $message }}</strong>
+                                                                </span>
+                                                            @enderror
                                                         </div>
                                                     </div>
                                                     <div class="col-md-12">
                                                         <div class="form-group">
-                                                            <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
+
+                                                            <textarea class="form-control @error('message') is-invalid @enderror" name="message" rows="5"
+                                                                placeholder="Message"></textarea>
+
+
+
+                                                            @error('message')
+                                                                <span class="invalid-feedback" role="alert">
+                                                                    <strong>{{ $message }}</strong>
+                                                                </span>
+                                                            @enderror
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-12 text-center my-3">
-                                                        <div class="loading">Loading</div>
-                                                        <div class="error-message"></div>
-                                                        <div class="sent-message">Your message has been sent. Thank
-                                                            you!</div>
-                                                    </div>
+
                                                     <div class="col-md-12 text-center">
                                                         <button type="submit"
-                                                            class="button button-a button-big button-rouded">Send
+                                                            class="mt-4 button button-a button-big button-rouded">Send
                                                             Message</button>
                                                     </div>
                                                 </div>
                                             </form>
+
+
                                         </div>
                                     </div>
                                     <div class="col-md-6">
@@ -686,23 +565,19 @@
                                         </div>
                                         <div class="more-info">
                                             <p class="lead">
-                                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis dolorum
-                                                dolorem soluta quidem
-                                                expedita aperiam aliquid at.
-                                                Totam magni ipsum suscipit amet? Autem nemo esse laboriosam ratione
-                                                nobis
-                                                mollitia inventore?
+                                                @php
+                                                    echo $about->description;
+                                                @endphp
                                             </p>
                                             <ul class="list-ico">
-                                                <li><span class="bi bi-geo-alt"></span> 329 WASHINGTON ST BOSTON, MA
-                                                    02108</li>
-                                                <li><span class="bi bi-phone"></span> (617) 557-0089</li>
-                                                <li><span class="bi bi-envelope"></span> contact@example.com</li>
+                                                <li><span class="bi bi-geo-alt"></span>Dhaka Danmondi(32)</li>
+                                                <li><span class="bi bi-phone"></span>{{ $about->phone }}</li>
+                                                <li><span class="bi bi-envelope"></span>{{ $about->email }}</li>
                                             </ul>
                                         </div>
                                         <div class="socials">
                                             <ul>
-                                                <li><a href=""><span class="ico-circle"><i
+                                                <li><a href="https://www.facebook.com/"><span class="ico-circle"><i
                                                                 class="bi bi-facebook"></i></span></a></li>
                                                 <li><a href=""><span class="ico-circle"><i
                                                                 class="bi bi-instagram"></i></span></a></li>

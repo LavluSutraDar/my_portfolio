@@ -9,10 +9,6 @@
     @include('frontend.layouts.navbar')
     <!-- End Header -->
 
-    <!-- ======= Hero Section ======= -->
-    @include('frontend.layouts.hero')
-    <!-- End Hero Section -->
-
     @yield('main-section')
 
     <!-- ======= Footer ======= -->

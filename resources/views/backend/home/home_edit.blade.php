@@ -53,6 +53,8 @@
                         <label for="" class="form-label">Chose Edit Your Image</label>
                         <input type="file" name="image" class="form-control-file @error('image') is-invalid @enderror">
 
+                        <img src="{{ asset('backend/home-image/' . $data->image) }}" alt=""style="width: 100px" class="mt-2">
+
                         <input type="hidden" name="old_image"
                             class="form-control-file" value="{{ $data->image }}">
 
@@ -61,16 +63,14 @@
                                 <strong>{{ $message }}</strong>
                             </span>
                         @enderror
-
                     </div>
 
                       <div class="mb-3">
                         <label for="" class="form-label">Chose your Edit PDF Fle</label>
+                        <input type="file" name="resume"
+                            class="mb-2 form-control-file @error('resume') is-invalid @enderror"">
 
-                        {{-- <input type="file" name="resume"
-                            class="mb-2 form-control-file @error('resume') is-invalid @enderror""> --}}
-
-                            <input type="file" name="edit_resume"
+                            <input type="hidden" name="edit_resume"
                             class="mb-2 form-control-file" value="{{ $data->resume }}">
 
                         @error('resume')

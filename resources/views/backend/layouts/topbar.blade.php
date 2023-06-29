@@ -177,19 +177,25 @@
                    </a>
                    <div class="dropdown-divider"></div>
 
-                   <a class="dropdown-item" href="" data-toggle="modal"
+                   {{-- <a class="dropdown-item" href="" data-toggle="modal"
                        data-target="#logoutModal">
                        <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                        Logout
-                   </a>
+                   </a> --}}
 
-                   {{-- <form method="POST" action="{{ route('home') }}">
+                    {{-- <form action="{{route('logout')}}" method="POST"> --}}
+                    {{-- @csrf --}}
+                    {{-- <button type="submit" class="btn btn-primary">LOGOUT</button> --}}
+
+                    {{-- </form> --}}
+
+                    <form method="POST" action="{{ route('logout') }}">
                        @csrf
                        <button type="submit" class="logout dropdown-item btn btn-primary form-control"
                            data-toggle="modal" data-target="#logoutModal">
                            Log Out
                        </button>
-                   </form> --}}
+                   </form>
                </div>
            </li>
 
